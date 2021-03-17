@@ -1,0 +1,44 @@
+# Compiled outputs
+/dist
+/.build/
+_optimize/*
+
+# Dependencies
+/node_modules
+
+# Logs
+*logs/*
+*.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Config
+.env
+.env.yml
+
+# Serverless Framework
+/.serverless/
+/_warmup/
+
+dynamodb/content

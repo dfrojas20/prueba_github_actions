@@ -1,0 +1,24 @@
+{
+  "name": "oikoshr-backend-calcs",
+  "version": "1.0.0",
+  "description": "Servicio de calculos matemáticos de OikosHR",
+  "author": "Synergy",
+  "license": "ISC",
+  "scripts": {
+    "sls:offline": "sls offline",
+    "sls:package": "sls package",
+    "sls:deploy": "sls deploy",
+    "sls:remove": "sls remove"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.72",
+    "@types/node": "^14.14.6",
+    "prettier": "^2.2.1",
+    "serverless": "^2.28.7",
+    "serverless-offline": "^6.8.0",
+    "serverless-plugin-optimize": "^4.1.4-rc.1",
+    "serverless-plugin-typescript": "^1.1.9",
+    "serverless-pseudo-parameters": "^2.5.0",
+    "typescript": "^4.0.5"
+  }
+}
