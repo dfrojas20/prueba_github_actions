@@ -28,6 +28,6 @@ functions:
     handler: src/add/add.async
     events:
       - http:
-          path: add/async
+          path: async/add
           method: post
           async: true

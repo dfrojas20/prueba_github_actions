@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "12ce4eb5-1755-4c37-b643-91e870d72700",
+		"name": "oikoshr / calcs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"numbers\": [1,2,3,-10]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/add",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/add/async",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"numbers\": [10,30,60]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/async/add",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"async",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
