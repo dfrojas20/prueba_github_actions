@@ -4,17 +4,11 @@ interface Input {
   numbers: number[];
 }
 
-module.exports.handler = (event: APIGatewayEvent, context: Context, callback: Callback) => {
+module.exports.sync = (event, context: Context, callback: Callback) => {
   try {
-    const input: Input = JSON.parse(event.body);
-    console.log("input: %o", input);
-
-    const result: number = input.numbers.reduce((total, number) => total + number, 0);
-    console.log("result: " + result);
-
     callback(null, {
       statusCode: 200,
-      body: JSON.stringify({ result }),
+      body: JSON.stringify({ result: add(JSON.parse(event.body)) }),
     });
   } catch (e) {
     const errorMessage = e?.message || e;
@@ -24,4 +18,22 @@ module.exports.handler = (event: APIGatewayEvent, context: Context, callback: Ca
       body: JSON.stringify({ message: errorMessage }),
     });
   }
+};
+
+module.exports.async = async (event, context: Context, callback: Callback) => {
+  try {
+    setTimeout(() => {
+      add(event.body);
+    }, 5000);
+  } catch (e) {
+    const errorMessage = e?.message || e;
+    console.error(errorMessage);
+  }
+};
+
+const add = (input: Input): number => {
+  console.log("input: %o", input);
+  const result: number = input.numbers.reduce((total, number) => total + number, 0);
+  console.log("result: " + result);
+  return result;
 };

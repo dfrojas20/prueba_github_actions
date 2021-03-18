@@ -19,9 +19,15 @@ provider:
 
 functions:
   add:
-    handler: src/add/add.handler
+    handler: src/add/add.sync
     events:
       - http:
           path: add
           method: post
-          cors: true
+  add_async:
+    handler: src/add/add.async
+    events:
+      - http:
+          path: add/async
+          method: post
+          async: true
