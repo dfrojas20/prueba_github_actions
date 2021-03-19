@@ -22,12 +22,12 @@ functions:
     handler: src/add/add.sync
     events:
       - http:
-          path: add
+          path: calcs/add
           method: post
   add_async:
     handler: src/add/add.async
     events:
       - http:
-          path: async/add
+          path: calcs/async/add
           method: post
           async: true
