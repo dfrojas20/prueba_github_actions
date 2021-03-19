@@ -5,6 +5,7 @@
   "author": "Synergy",
   "license": "ISC",
   "scripts": {
+    "tunnel": "ngrok http 3000",
     "sls:offline": "sls offline",
     "sls:package": "sls package",
     "sls:deploy": "sls deploy",
@@ -13,6 +14,7 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.72",
     "@types/node": "^14.14.6",
+    "ngrok": "^3.4.1",
     "prettier": "^2.2.1",
     "serverless": "^2.28.7",
     "serverless-offline": "^6.8.0",
