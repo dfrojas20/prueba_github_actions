@@ -31,3 +31,9 @@ functions:
           path: calcs/async/add
           method: post
           async: true
+  simplePayroll:
+    handler: src/simplePayroll/simplePayroll.sync
+    events:
+      - http:
+          path: calcs/simplePayroll
+          method: post
