@@ -37,3 +37,9 @@ functions:
       - http:
           path: calcs/simplePayroll
           method: post
+  thirteenthMonth:
+    handler: src/thirteenthMonth/thirteenthMonth.sync
+    events:
+      - http:
+          path: calcs/thirteenthMonth
+          method: post
