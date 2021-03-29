@@ -23,7 +23,7 @@ export function search_period (payment_frecuency) {
         period_number = ((4 + 1/3)*13/2);
     }
     else if (payment_frecuency == "Quincenal"){
-        period_number = 26;
+        period_number = 13*2;
     }
     else if (payment_frecuency == "Mensual"){
         period_number = 13;
@@ -38,15 +38,15 @@ export function anual_salary (salary, period_number) {
 
 export function anual_islr(anual_salary) {
     var islr_amount = 0
-    if (anual_salary <= 11000){
+    if (anual_salary <= 11000) {
         return round(islr_amount, 2);
     }
-    else if (anual_salary > 11000 || anual_salary <= 50000){
-        islr_amount = (anual_salary - 11000)* 0.15;
+    else if (anual_salary > 11000 || anual_salary <= 50000) {
+        islr_amount = (anual_salary - 11000) * 0.15;
     }
     else if (anual_salary > 50000) {
         var islr_amount_first = (anual_salary - 50000) * 0.25;
-        var islr_amount_second = 50000 * 0.15;
+        var islr_amount_second = (50000 - 11000) * 0.15;
         islr_amount = islr_amount_first + islr_amount_second;
     }
     return round(islr_amount, 2);
@@ -83,7 +83,7 @@ export function monthly_salary (salary, payment_frecuency) {
         return round(salary * (4 + 1/3)/2, 2);
     }
     else if (payment_frecuency == "Quincenal"){
-        return round(salary * 26, 2);
+        return round(salary * 2, 2);
     }
     else if (payment_frecuency == "Mensual"){
         return round(salary, 2);
@@ -93,6 +93,11 @@ export function monthly_salary (salary, payment_frecuency) {
 
 export function thirteenth_month (salary){
     return round(salary/3, 2);
+}
+
+export function average_amount(first_amount, second_amount, third_amount, fourth_amount, fifth_amount){
+    var average_amount = (first_amount + second_amount + third_amount + fourth_amount + fifth_amount) / 4;
+    return round(average_amount, 2);
 }
 
 export function round (num, decimales) {
