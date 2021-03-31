@@ -38,10 +38,11 @@ export function anual_salary (salary, period_number) {
 
 export function anual_islr(anual_salary) {
     var islr_amount = 0
+    console.log('Salario anual: %o', anual_salary)
     if (anual_salary <= 11000) {
         return round(islr_amount, 2);
     }
-    else if (anual_salary > 11000 || anual_salary <= 50000) {
+    else if (anual_salary > 11000 && anual_salary <= 50000) {
         islr_amount = (anual_salary - 11000) * 0.15;
     }
     else if (anual_salary > 50000) {
@@ -98,6 +99,14 @@ export function thirteenth_month (salary){
 export function average_amount(first_amount, second_amount, third_amount, fourth_amount, fifth_amount){
     var average_amount = (first_amount + second_amount + third_amount + fourth_amount + fifth_amount) / 4;
     return round(average_amount, 2);
+}
+
+export function find_vacation_amount(Object){
+    var amounts = 0;
+    for (var amount in Object){
+        amounts = amounts + parseFloat(Object[amount]);
+    }
+    return amounts/11;
 }
 
 export function round (num, decimales) {

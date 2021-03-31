@@ -45,6 +45,7 @@ const simplePayroll = (input: Input) => {
     }
     result.social_security_amount = calcs.social_security(result.salary_amount, false);
     result.educational_insurance_amount = calcs.educational_insurance(result.salary_amount);
+    
     var period_number = calcs.search_period(input.payment_frecuency);
     result.anual_salary_amount = calcs.anual_salary(result.salary_amount, period_number);
     result.anual_islr_amount = calcs.anual_islr(result.anual_salary_amount);

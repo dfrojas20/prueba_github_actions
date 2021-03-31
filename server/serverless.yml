@@ -49,3 +49,9 @@ functions:
       - http:
           path: calcs/thirteenthMonth_exact
           method: post
+  vacation:
+    handler: src/vacations/vacations.sync
+    events:
+      - http:
+          path: calcs/vacations
+          method: post
