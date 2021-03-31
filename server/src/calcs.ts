@@ -101,12 +101,17 @@ export function average_amount(first_amount, second_amount, third_amount, fourth
     return round(average_amount, 2);
 }
 
-export function find_vacation_amount(Object){
+export function find_vacation_amount(Object, last_salary){
     var amounts = 0;
     for (var amount in Object){
         amounts = amounts + parseFloat(Object[amount]);
     }
-    return amounts/11;
+    if (amounts > last_salary){
+        return amounts/11;
+    }
+    else {
+        return last_salary;
+    }
 }
 
 export function round (num, decimales) {

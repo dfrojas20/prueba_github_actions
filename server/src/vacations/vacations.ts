@@ -44,7 +44,7 @@ module.exports.sync = (event, context: Context, callback: Callback) => {
 const vacations = (input: Input) => {
   console.log("input: %o", input);
 
-  result.vacation_amount_base = calcs.find_vacation_amount(input);
+  result.vacation_amount_base = calcs.find_vacation_amount(input, input.eleventh_month_salary);
   result.social_security_amount = calcs.social_security(result.vacation_amount_base, false);
   result.educational_insurance_amount = calcs.educational_insurance(result.vacation_amount_base);
 
