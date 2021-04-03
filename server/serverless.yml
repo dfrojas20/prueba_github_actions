@@ -15,7 +15,10 @@ provider:
   stage: ${opt:stage,'dev'}
   lambdaHashingVersion: 20201221
   apiGateway:
-    shouldStartNameWithService: true
+    restApiId:
+      "Fn::ImportValue": OikoshrApiGateway-${self:provider.stage}-restApiId
+    restApiRootResourceId:
+      "Fn::ImportValue": OikoshrApiGateway-${self:provider.stage}-rootResourceId
 
 functions:
   add:
