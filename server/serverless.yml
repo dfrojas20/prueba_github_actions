@@ -34,3 +34,27 @@ functions:
           path: calcs/async/add
           method: post
           async: true
+  simplePayroll:
+    handler: src/simplePayroll/simplePayroll.sync
+    events:
+      - http:
+          path: calcs/simplePayroll
+          method: post
+  thirteenthMonth_simple:
+    handler: src/thirteenthMonth_simple/thirteenthMonth_simple.sync
+    events:
+      - http:
+          path: calcs/thirteenthMonth_simple
+          method: post
+  thirteenthMonth_exact:
+    handler: src/thirteenthMonth_exact/thirteenthMonth_exact.sync
+    events:
+      - http:
+          path: calcs/thirteenthMonth_exact
+          method: post
+  vacation:
+    handler: src/vacations/vacations.sync
+    events:
+      - http:
+          path: calcs/vacations
+          method: post
