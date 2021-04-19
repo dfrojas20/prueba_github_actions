@@ -13,6 +13,9 @@ const result = {
   total_years: null,
   average_weekly_salary: null,
   seniority_premium: null,
+  social_security_amount: null,
+  educational_insurance_amount: null,
+  total_settlement_amount: null,
 };
 
 module.exports.sync = (event, context: Context, callback: Callback) => {
@@ -43,6 +46,12 @@ const settlement = (input: Input) => {
     result.total_years,
     input.settlement_dismissal_type,
     extra_month
+  );
+  result.social_security_amount = calcs.social_security(result.seniority_premium, false);
+  result.educational_insurance_amount = calcs.educational_insurance(result.seniority_premium);
+  result.total_settlement_amount = calcs.round(
+    result.seniority_premium - result.social_security_amount - result.educational_insurance_amount,
+    2
   );
   return result;
 };
