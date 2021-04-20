@@ -11,6 +11,7 @@ interface Input {
 
 const result = {
   total_years: null,
+  extra_month: null,
   average_weekly_salary: null,
   seniority_premium: null,
   social_security_amount: null,
@@ -36,16 +37,20 @@ module.exports.sync = (event, context: Context, callback: Callback) => {
 
 const settlement = (input: Input) => {
   console.log("input: %o", input);
-  var settlement_entry_year = getYear(input.settlement_entry_date);
-  var settlement_egress_year = getYear(input.settlement_egress_date);
+  var settlement_entry_reformated = reformateDate(input.settlement_entry_date);
+  var settlement_egress_reformated = reformateDate(input.settlement_egress_date);
+  var settlement_entry_year = parseInt(settlement_entry_reformated[0]);
+  var settlement_egress_year = parseInt(settlement_egress_reformated[0]);
+
   result.total_years = calcs.total_years(settlement_entry_year, settlement_egress_year);
   result.average_weekly_salary = calcs.average_weekly_salary(input.accumulated_salary_input);
-  var extra_month = getMonth(input.settlement_egress_date);
+  result.extra_month = parseInt(settlement_egress_reformated[1]);
+
   result.seniority_premium = calcs.seniority_premium(
     result.average_weekly_salary,
     result.total_years,
     input.settlement_dismissal_type,
-    extra_month
+    result.extra_month
   );
   result.social_security_amount = calcs.social_security(result.seniority_premium, false);
   result.educational_insurance_amount = calcs.educational_insurance(result.seniority_premium);
@@ -56,14 +61,8 @@ const settlement = (input: Input) => {
   return result;
 };
 
-function getYear(date) {
-  var date_reformated = date.split("T");
-  var year = date_reformated[0].split("-");
-  return year[0];
-}
-
-function getMonth(date) {
-  var date_reformated = date.split("T");
-  var month = date_reformated[0].split("-");
-  return month[1];
+function reformateDate(date) {
+  var date_split = date.split("T");
+  var date_reformated = date_split[0].split("-");
+  return date_reformated;
 }
