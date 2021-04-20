@@ -43,7 +43,7 @@ const settlement = (input: Input) => {
   var settlement_egress_year = parseInt(settlement_egress_reformated[0]);
 
   result.total_years = calcs.total_years(settlement_entry_year, settlement_egress_year);
-  result.average_weekly_salary = calcs.average_weekly_salary(input.accumulated_salary_input);
+  result.average_weekly_salary = calcs.average_weekly_salary(input.accumulated_salary_input, result.total_years);
   result.extra_month = parseInt(settlement_egress_reformated[1]);
 
   result.seniority_premium = calcs.seniority_premium(
