@@ -58,3 +58,9 @@ functions:
       - http:
           path: calcs/vacations
           method: post
+  settlement:
+    handler: src/settlement/settlement.sync
+    events:
+      - http:
+          path: calcs/settlement
+          method: post
