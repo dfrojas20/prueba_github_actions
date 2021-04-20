@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "12ce4eb5-1755-4c37-b643-91e870d72700",
+		"_postman_id": "ab1b1183-9b82-45fd-a86d-93aaa84327dc",
 		"name": "oikoshr / calcs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"numbers\": [1,2,3,-10]\n}",
+					"raw": "{\n    \"numbers\": [1,1,2,3,5]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -27,12 +27,49 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseurl}}/add",
+					"raw": "{{baseurl}}/dev/calcs/add",
 					"host": [
 						"{{baseurl}}"
 					],
 					"path": [
+						"dev",
+						"calcs",
 						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/simplePayroll",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"salary\": 2000,\n    \"payment_frecuency\": \"Quincenal\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/dev/calcs/simplePayroll",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"dev",
+						"calcs",
+						"simplePayroll"
 					]
 				}
 			},
@@ -67,6 +104,118 @@
 					"path": [
 						"async",
 						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/thirteenthMonth_simple",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"salary\": 1000,\r\n    \"payment_frecuency\": \"Quincenal\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/dev/calcs/thirteenthMonth_simple",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"dev",
+						"calcs",
+						"thirteenthMonth_simple"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/thirteenthMonth_exact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_fortnightly_amount\": \"1000\",\r\n    \"second_fortnightly_amount\": \"1000\",\r\n    \"first_month_amount\": \"2000\",\r\n    \"second_month_amount\": \"2000\",\r\n    \"third_month_amount\": \"2000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/dev/calcs/thirteenthMonth_exact",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"dev",
+						"calcs",
+						"thirteenthMonth_exact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/vacations",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_month_salary\": 5000,\r\n    \"second_month_salary\": 5000,\r\n    \"third_month_salary\": 5000,\r\n    \"fourth_month_salary\": 5000,\r\n    \"fifth_month_salary\": 5000,\r\n    \"sixth_month_salary\": 5000,\r\n    \"seventh_month_salary\": 5000,\r\n    \"eighth_month_salary\": 5000,\r\n    \"ninth_month_salary\": 5000,\r\n    \"tenth_month_salary\": 5000,\r\n    \"eleventh_month_salary\": 5000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/dev/calcs/vacations",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"dev",
+						"calcs",
+						"vacations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/settlement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"salary_input\": 1000,\r\n    \"accumulated_salary_input\": 47525,\r\n    \"settlement_entry_date\": \"2015-06-01\",\r\n    \"settlement_egress_date\": \"2020-03-12\",\r\n    \"settlement_dismissal_type\": \"Justificado\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/dev/calcs/settlement",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"dev",
+						"calcs",
+						"settlement"
 					]
 				}
 			},
