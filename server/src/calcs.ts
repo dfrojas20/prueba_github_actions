@@ -111,8 +111,13 @@ export function total_years(settlement_entry_year, settlement_egress_year) {
   return total_years;
 }
 
-export function average_weekly_salary(accumulated_salary_input) {
-  return round(accumulated_salary_input / 260, 2);
+export function average_weekly_salary(accumulated_salary_input, total_years) {
+  const weeks = 52;
+  if (total_years >= 5) {
+    return round(accumulated_salary_input / 260, 2);
+  }
+  var weekly_years = weeks * total_years;
+  return round(accumulated_salary_input / weekly_years, 2);
 }
 
 export function seniority_premium(
