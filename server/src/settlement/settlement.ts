@@ -17,6 +17,8 @@ const result = {
   social_security_amount: null,
   educational_insurance_amount: null,
   total_settlement_amount: null,
+  settlement_dismissal_type: null,
+  conversation: null
 };
 
 module.exports.sync = (event, context: Context, callback: Callback) => {
@@ -37,6 +39,10 @@ module.exports.sync = (event, context: Context, callback: Callback) => {
 
 const settlement = (input: Input) => {
   console.log("input: %o", input);
+
+  result.settlement_dismissal_type = input.settlement_dismissal_type;
+  result.conversation = "settlement_explanations";
+
   var settlement_entry_reformated = reformateDate(input.settlement_entry_date);
   var settlement_egress_reformated = reformateDate(input.settlement_egress_date);
   var settlement_entry_year = parseInt(settlement_entry_reformated[0]);

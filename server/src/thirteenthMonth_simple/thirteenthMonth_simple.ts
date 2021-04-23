@@ -4,6 +4,7 @@ import * as calcs from "../calcs";
 interface Input {
   salary: any;
   payment_frecuency: string;
+  thirteenth_payment_period: string
 }
 
 const result = {
@@ -16,6 +17,9 @@ const result = {
   social_security_amount: null,
   anual_islr_amount: null,
   islr_amount: null,
+  payment_frecuency: null,
+  thirteenth_payment_period: null,
+  conversation: null
 };
 
 module.exports.sync = (event, context: Context, callback: Callback) => {
@@ -36,6 +40,11 @@ module.exports.sync = (event, context: Context, callback: Callback) => {
 
 const thirteenthMonth_simple = (input: Input) => {
   console.log("input: %o", input);
+
+  result.payment_frecuency = input.payment_frecuency;
+  result.thirteenth_payment_period = input.thirteenth_payment_period;
+  result.conversation = "thirteenth_month_explanations";
+
   if (input.salary > 50) {
     result.salary_amount = parseFloat(input.salary);
     result.salary_amount_hour = 0;

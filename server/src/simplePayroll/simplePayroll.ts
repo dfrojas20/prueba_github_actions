@@ -15,6 +15,8 @@ const result = {
   educational_insurance_amount: null,
   anual_islr_amount: null,
   islr_amount: null,
+  payment_frecuency: null,
+  conversation: null
 };
 
 module.exports.sync = (event, context: Context, callback: Callback) => {
@@ -35,6 +37,10 @@ module.exports.sync = (event, context: Context, callback: Callback) => {
 
 const simplePayroll = (input: Input) => {
   console.log("input: %o", input);
+
+  result.payment_frecuency = input.payment_frecuency;
+  result.conversation = "simple_payroll";
+
   if (input.salary > 50) {
     result.salary_amount = input.salary;
     result.salary_amount_hour = 0;
