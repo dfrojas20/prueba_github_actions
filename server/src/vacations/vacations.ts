@@ -23,6 +23,7 @@ const result = {
   social_security_amount: null,
   vacation_amount_base: null,
   vacation_amount_net: null,
+  conversation: null
 }
 
 module.exports.sync = (event, context: Context, callback: Callback) => {
@@ -43,7 +44,7 @@ module.exports.sync = (event, context: Context, callback: Callback) => {
 
 const vacations = (input: Input) => {
   console.log("input: %o", input);
-
+  result.conversation = "vacations_explanations";
   result.vacation_amount_base = calcs.find_vacation_amount(input, input.eleventh_month_salary);
   result.social_security_amount = calcs.social_security(result.vacation_amount_base, false);
   result.educational_insurance_amount = calcs.educational_insurance(result.vacation_amount_base);
