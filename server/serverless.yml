@@ -1,4 +1,4 @@
-service: ${env:APP_SERVICE_NAME}
+service: ${env:APP_SERVICE_NAME}-${self:custom.appPosfix}
 variablesResolutionMode: 20210219
 useDotenv: true
 
@@ -19,7 +19,7 @@ provider:
     restApiRootResourceId: ${self:custom.restApiRootResourceId}
 
 custom:
-  isPrivate: ${env:IS_PRIVATE}
+  appPosfix: ${env:APP_POSFIX}
   apiGateway:
   restApiId:
     !If [
@@ -84,4 +84,4 @@ functions:
 
 resources:
   Conditions:
-    IsPrivate: !Equals ["true", "${self:custom.isPrivate}"]
+    IsPrivate: !Equals ["private", "${self:custom.appPosfix}"]
