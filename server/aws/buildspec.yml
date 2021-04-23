@@ -10,7 +10,13 @@ phases:
       - npm install --silent --no-progress
   build:
     commands:
+      - IS_PRIVATE="false"
+      - npm run sls:package -- --stage $APP_STAGE -r $AWS_REGION
+      - IS_PRIVATE="true"
       - npm run sls:package -- --stage $APP_STAGE -r $AWS_REGION
   post_build:
     commands:
+      - IS_PRIVATE="false"
+      - npm run sls:deploy -- --stage $APP_STAGE -r $AWS_REGION
+      - IS_PRIVATE="true"
       - npm run sls:deploy -- --stage $APP_STAGE -r $AWS_REGION
