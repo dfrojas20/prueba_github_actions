@@ -15,10 +15,27 @@ provider:
   stage: ${opt:stage,'dev'}
   lambdaHashingVersion: 20201221
   apiGateway:
-    restApiId:
-      "Fn::ImportValue": OikoshrApiGateway-${self:provider.stage}-restApiId
-    restApiRootResourceId:
-      "Fn::ImportValue": OikoshrApiGateway-${self:provider.stage}-rootResourceId
+    restApiId: ${self:custom.restApiId}
+    restApiRootResourceId: ${self:custom.restApiRootResourceId}
+
+custom:
+  isPrivate: ${env:IS_PRIVATE}
+  apiGateway:
+  restApiId:
+    !If [
+      IsPrivate,
+      !ImportValue "OikoshrPrivateApiGateway-${self:provider.stage}-restApiId",
+      !ImportValue "OikoshrApiGateway-${self:provider.stage}-restApiId",
+    ]
+  restApiRootResourceId:
+    !If [
+      IsPrivate,
+      !ImportValue "OikoshrPrivateApiGateway-${self:provider.stage}-rootResourceId",
+      !ImportValue "OikoshrApiGateway-${self:provider.stage}-rootResourceId",
+    ]
+
+package:
+  individually: true
 
 functions:
   add:
@@ -64,3 +81,7 @@ functions:
       - http:
           path: calcs/settlement
           method: post
+
+resources:
+  Conditions:
+    IsPrivate: !Equals ["true", "${self:custom.isPrivate}"]
