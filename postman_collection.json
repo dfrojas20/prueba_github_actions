@@ -116,7 +116,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"salary\": 1000,\r\n    \"payment_frecuency\": \"Quincenal\"\r\n}",
+					"raw": "{\r\n    \"salary\": 1000,\r\n    \"payment_frecuency\": \"Quincenal\",\r\n    \"thirteenth_payment_period\": \"Abril\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -144,7 +144,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"first_fortnightly_amount\": \"1000\",\r\n    \"second_fortnightly_amount\": \"1000\",\r\n    \"first_month_amount\": \"2000\",\r\n    \"second_month_amount\": \"2000\",\r\n    \"third_month_amount\": \"2000\"\r\n}",
+					"raw": "{\r\n    \"first_fortnightly_amount\": \"1000\",\r\n    \"second_fortnightly_amount\": \"1000\",\r\n    \"first_month_amount\": \"2000\",\r\n    \"second_month_amount\": \"2000\",\r\n    \"third_month_amount\": \"2000\",\r\n    \"payment_frecuency\": \"Mensual\",\r\n    \"thirteenth_payment_period\": \"Abril\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -200,7 +200,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"salary_input\": 1000,\r\n    \"accumulated_salary_input\": 47525,\r\n    \"settlement_entry_date\": \"2015-06-01\",\r\n    \"settlement_egress_date\": \"2020-03-12\",\r\n    \"settlement_dismissal_type\": \"Justificado\"\r\n}",
+					"raw": "{\r\n    \"salary_input\": 1000,\r\n    \"accumulated_salary_input\": 47525,\r\n    \"settlement_entry_date\": \"2015-06-01\",\r\n    \"settlement_egress_date\": \"2018-03-12\",\r\n    \"settlement_dismissal_type\": \"Justificado\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
