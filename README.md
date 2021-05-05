@@ -31,3 +31,17 @@ cp .env.example .env
 ```bash
 npm run sls:offline start
 ```
+
+## Desplegar 🚀
+
+```bash
+npm run sls:deploy -- -s <STAGE>
+```
+
+Ej.
+
+```bash
+npm run sls:deploy -- -s dev
+```
+
+> Despliega las funciones Lambda. Se pueden repetir los pasos de [configurar servicios en AWS](#configurar-servicios-en-aws-☁) para establecer unos diferentes para producción
