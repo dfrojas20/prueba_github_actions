@@ -11,12 +11,6 @@ phases:
   build:
     commands:
       - APP_POSFIX="public"
-      - npm run sls:package -- --stage $APP_STAGE -r $AWS_REGION
-      - APP_POSFIX="private"
-      - npm run sls:package -- --stage $APP_STAGE -r $AWS_REGION
-  post_build:
-    commands:
-      - APP_POSFIX="public"
       - npm run sls:deploy -- --stage $APP_STAGE -r $AWS_REGION
       - APP_POSFIX="private"
       - npm run sls:deploy -- --stage $APP_STAGE -r $AWS_REGION
