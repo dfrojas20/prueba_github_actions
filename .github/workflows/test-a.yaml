@@ -33,6 +33,7 @@ jobs:
           cd server
           cp .env.example .env
           npm i
+          npm ls --depth 0
       - name: install PM2
         run: npm install pm2 -g
       - name: Run server
@@ -40,7 +41,7 @@ jobs:
           cd ${{ github.workspace }}/server
           echo "npm run sls:offline start" > run.sh
           chmod +x run.sh
-          pm2 start script.sh
+          pm2 start run.sh
           pm2 ps
       - name: Test
         run: |
