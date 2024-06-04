@@ -43,9 +43,11 @@ jobs:
           chmod +x run.sh
           pm2 start run.sh
           pm2 ps
+      - name: Wait
+        run: sleep 20
       - name: Test
         run: |
-          echo "Sleeping 60 seg"
-          sleep 60
+          pm2 logs 0 --lines 50 --nostream
+          ss -ntlp
           curl -s -H "Accept: application/json" -X POST -d '{"numbers": [1,1,2,3,5]}' POST http://localhost:3000/dev/calcs/add
           pm2 logs 0 --lines 5 --nostream
