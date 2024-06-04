@@ -33,10 +33,17 @@ jobs:
           cd server
           cp .env.example .env
           npm i
-      - name: Test
+      - name: install PM2
+        run: npm install pm2 -g
+      - name: Run server
         run: |
           cd ${{ github.workspace }}/server
-          (npm run sls:offline start&)
+          echo "npm run sls:offline start" > run.sh
+          chmod +x run.sh
+          pm2 start script.sh
+          pm2 ps
+      - name: Test
           echo "Sleeping 60 seg"
           sleep 60
           curl -s -H "Accept: application/json" -X POST -d '{"numbers": [1,1,2,3,5]}' POST http://localhost:3000/dev/calcs/add
+          pm2 logs 0 --lines 5 --nostream
