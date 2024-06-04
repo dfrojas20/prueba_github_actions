@@ -37,7 +37,10 @@ jobs:
       - name: install PM2
         run: npm install pm2 -g
       - name: Run server
+        env:
+          DB_PASS: devpass
         run: |
+          echo $DB_PASS
           cd ${{ github.workspace }}/server
           echo "npm run sls:offline start" > run.sh
           chmod +x run.sh
@@ -50,7 +53,8 @@ jobs:
           pm2 logs 0 --lines 50 --nostream
           ss -ntlp
           nc -vz localhost 3000
-          nc -vz 127.0.0.1 3000
           cd ${{ github.workspace }}/server
           npm run test
           pm2 logs 0 --lines 5 --nostream
+      - name: Kill
+        run: pm2 kill
