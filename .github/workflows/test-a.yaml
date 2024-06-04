@@ -18,7 +18,6 @@ jobs:
           echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
           echo "🖥️ The workflow is now ready to test your code on the runner."
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Install Node
         run: |
           curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -36,6 +35,7 @@ jobs:
           npm i
       - name: Test
         run: |
+          cd ${{ github.workspace }}/server
           (npm run sls:offline start&)
           echo "Sleeping 60 seg"
           sleep 60
