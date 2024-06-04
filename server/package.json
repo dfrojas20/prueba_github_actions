@@ -10,12 +10,14 @@
     "sls:package": "sls package",
     "sls:deploy": "sls deploy",
     "sls:remove": "sls remove",
-    "aws:update:env": "ts-node aws/update-env.ts"
+    "aws:update:env": "ts-node aws/update-env.ts",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.72",
     "@types/node": "^14.14.6",
     "aws-sdk": "^2.879.0",
+    "jest": "^29.7.0",
     "ngrok": "^3.4.1",
     "prettier": "^2.2.1",
     "serverless": "^2.28.7",

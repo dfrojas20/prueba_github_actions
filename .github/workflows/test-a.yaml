@@ -49,5 +49,6 @@ jobs:
         run: |
           pm2 logs 0 --lines 50 --nostream
           ss -ntlp
-          curl -s -H "Accept: application/json" --connect-timeout 30 -X POST -d '{"numbers": [1,1,2,3,5]}' POST http://localhost:3000/dev/calcs/add
+          cd ${{ github.workspace }}/server
+          npm run test
           pm2 logs 0 --lines 5 --nostream
