@@ -1,0 +1,39 @@
+
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Metadata
+        run: |
+          echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+          echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+          echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Clone repo
+        uses: actions/checkout@v4
+      - name: Check repo
+        run: |
+          echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+          echo "🖥️ The workflow is now ready to test your code on the runner."
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Install Node
+        run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+          nvm install 14
+          node -v
+          npm -v
+      - name: Install Node dependencies
+        run:
+          cd ${{ github.workspace }}
+          cd server
+          cp .env.example .env
+          npm i
+      - name: Test
+        run: |
+          (npm run sls:offline start&)
+          echo "Sleeping 60 seg"
+          sleep 60
+          curl -s -H "Accept: application/json" -X POST -d '{"numbers": [1,1,2,3,5]}' POST http://localhost:3000/dev/calcs/add
