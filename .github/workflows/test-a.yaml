@@ -49,6 +49,8 @@ jobs:
         run: |
           pm2 logs 0 --lines 50 --nostream
           ss -ntlp
+          nc -vz localhost 3000
+          nc -vz 127.0.0.1 3000
           cd ${{ github.workspace }}/server
           npm run test
           pm2 logs 0 --lines 5 --nostream
