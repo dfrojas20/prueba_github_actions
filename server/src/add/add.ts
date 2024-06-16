@@ -23,7 +23,7 @@ module.exports.sync = (event, context: Context, callback: Callback) => {
 module.exports.async = async (event, context: Context, callback: Callback) => {
   try {
     setTimeout(() => {
-      add(event.body);
+      add(JSON.parse(event.body));
     }, 5000);
   } catch (e) {
     const errorMessage = e?.message || e;

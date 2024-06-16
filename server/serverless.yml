@@ -50,7 +50,7 @@ functions:
       - http:
           path: calcs/async/add
           method: post
-          async: true
+
   simplePayroll:
     handler: src/simplePayroll/simplePayroll.sync
     events:
