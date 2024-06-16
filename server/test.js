@@ -8,6 +8,6 @@ it('test add', async () => {
     numbers: [1,1,2,3,5],
   })
   expect(res?.data.result).toBe(12)
-},40000)
+},20307)
 })
 
