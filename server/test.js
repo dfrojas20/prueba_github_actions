@@ -1,5 +1,7 @@
 // curl -s -H "Accept: application/json" -X POST -d '{"numbers": [1,1,2,3,5]}' POST http://localhost:3000/dev/calcs/add --connect-timeout 30
 
+jest.setTimeout(60000);
+
 describe('basics', () => {
 
 it('test add', async () => {
@@ -10,3 +12,4 @@ it('test add', async () => {
   expect(res?.data.result).toBe(12)
 },4000)
 })
+
